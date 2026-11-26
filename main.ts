@@ -9,7 +9,11 @@ import { mkdirSync, writeFileSync } from "node:fs";
 // 1-200 chars, written to /output/entry.txt.
 const MAX_CHARS = 200;
 const LINE =
-  ((s: string) => { if (!s || s.trim().length < 1 || s.length > MAX_CHARS || s.includes("\n")) throw new Error("entry must be a single line, 1-200 chars, not blank"); return s; })("Synchronised Sighing: four judges score the depth, duration and disappointment of a single collective exhale.");
+  ((s: string) => { if (!s || s.trim().length < 1 || s.length > MAX_CHARS || s !== s.trim() || s.includes("\n")) throw new Error("entry must be a single line, 1-200 chars, not blank"); return s; })("Synchronised Sighing: four judges score the depth, duration and disappointment of a single collective exhale.");
+
+// It sounds like a real broadcast sport because it copies synchronised
+// swimming's shape — a judged routine, officials, a score — then asks
+// those judges to measure something unmeasurable: one shared sigh.
 
 // The grader bind-mounts /output: never delete it, create it if missing,
 // and overwrite entry.txt in place. The twist — disappointment as the
